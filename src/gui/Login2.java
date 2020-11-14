@@ -12,7 +12,7 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 
-import com.xd.Interfaces.UsersI;
+import com.xd.interfaces.Usersint;
 
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
@@ -29,7 +29,7 @@ public class Login2 {
 	private JTextField txtUserName;
 	private JPasswordField txtPassword;
 	
-	UsersI u1;
+	Usersint u1;
 	/**
 	 * Launch the application.
 	 */
@@ -141,7 +141,7 @@ public class Login2 {
 				String pwd=txtPassword.getText();
 				
 				try {
-					u1 = (UsersI) Naming.lookup("rmi://localhost/UserEvents");
+					u1 = (Usersint) Naming.lookup("rmi://localhost/UserActions");
 					
 					String result = u1.login(name, pwd);
 					
@@ -153,7 +153,7 @@ public class Login2 {
 						{
 							new Admin();
 						}
-						else if(result.equals("users"))
+						else
 						{
 							new Feedback();
 						}
@@ -187,5 +187,4 @@ public class Login2 {
 		panel_2.setBounds(479, 11, 10, 575);
 		frame.getContentPane().add(panel_2);
 	}
-
 }
